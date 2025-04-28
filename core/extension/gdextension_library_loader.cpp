@@ -284,6 +284,8 @@ Error GDExtensionLibraryLoader::parse_gdextension_file(const String &p_path) {
 	}
 
 	entry_symbol = config->get_value("configuration", "entry_symbol");
+/*
+ Remove this check for 4.0.0 compatibility, since it is not a requirement anymore.
 
 	uint32_t compatibility_minimum[3] = { 0, 0, 0 };
 	if (config->has_section_key("configuration", "compatibility_minimum")) {
@@ -301,18 +303,26 @@ Error GDExtensionLibraryLoader::parse_gdextension_file(const String &p_path) {
 		ERR_PRINT(vformat("GDExtension configuration file must contain a \"configuration/compatibility_minimum\" key: '%s'.", p_path));
 		return ERR_INVALID_DATA;
 	}
+*/
+
+/*
+	Remove this check for 4.0.0 compatibility, since it is not a requirement anymore.
 
 	if (compatibility_minimum[0] < 4 || (compatibility_minimum[0] == 4 && compatibility_minimum[1] == 0)) {
 		ERR_PRINT(vformat("GDExtension's compatibility_minimum (%d.%d.%d) must be at least 4.1.0: %s", compatibility_minimum[0], compatibility_minimum[1], compatibility_minimum[2], p_path));
 		return ERR_INVALID_DATA;
 	}
-
+*/
 	bool compatible = true;
+
+/*
+	// Remove this check for 4.0.0 compatibility, since it is not a requirement anymore.
+
 	// Check version lexicographically.
 	if (VERSION_MAJOR != compatibility_minimum[0]) {
-		compatible = VERSION_MAJOR > compatibility_minimum[0];
+		compatible = VERSION_MAJOR >= compatibility_minimum[0];
 	} else if (VERSION_MINOR != compatibility_minimum[1]) {
-		compatible = VERSION_MINOR > compatibility_minimum[1];
+		compatible = VERSION_MINOR >= compatibility_minimum[1];
 	} else {
 		compatible = VERSION_PATCH >= compatibility_minimum[2];
 	}
@@ -320,6 +330,7 @@ Error GDExtensionLibraryLoader::parse_gdextension_file(const String &p_path) {
 		ERR_PRINT(vformat("GDExtension only compatible with Redot version %d.%d.%d or later: %s", compatibility_minimum[0], compatibility_minimum[1], compatibility_minimum[2], p_path));
 		return ERR_INVALID_DATA;
 	}
+*/
 
 	// Optionally check maximum compatibility.
 	if (config->has_section_key("configuration", "compatibility_maximum")) {
@@ -341,12 +352,17 @@ Error GDExtensionLibraryLoader::parse_gdextension_file(const String &p_path) {
 		} else if (VERSION_MINOR != compatibility_maximum[1]) {
 			compatible = VERSION_MINOR < compatibility_maximum[1];
 		}
+/*
+Disable this check for 4.0.0 compatibility, since it is not a requirement anymore.
+
 #if VERSION_PATCH
 		// #if check to avoid -Wtype-limits warning when 0.
 		else {
 			compatible = VERSION_PATCH <= compatibility_maximum[2];
 		}
 #endif
+*/
+
 
 		if (!compatible) {
 			ERR_PRINT(vformat("GDExtension only compatible with Redot version %s or earlier: %s", compat_string, p_path));

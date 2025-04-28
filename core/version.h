@@ -92,19 +92,19 @@ extern const uint64_t VERSION_TIMESTAMP;
 // Defines the main "branch" version. Patch versions in this branch should be
 // forward-compatible.
 // Example: "3.1"
-#define GODOT_VERSION_BRANCH _MKSTR(GODOT_VERSION_MAJOR) "." _MKSTR(GODOT_VERSION_MINOR)
-#if GODOT_VERSION_PATCH
+#define REDOT_VERSION_BRANCH _MKSTR(REDOT_VERSION_MAJOR) "." _MKSTR(REDOT_VERSION_MINOR)
+#if REDOT_VERSION_PATCH
 // Example: "3.1.4"
-#define GODOT_VERSION_NUMBER GODOT_VERSION_BRANCH "." _MKSTR(GODOT_VERSION_PATCH)
+#define REDOT_VERSION_NUMBER REDOT_VERSION_BRANCH "." _MKSTR(REDOT_VERSION_PATCH)
 #else // patch is 0, we don't include it in the "pretty" version number.
 // Example: "3.1" instead of "3.1.0"
-#define GODOT_VERSION_NUMBER GODOT_VERSION_BRANCH
-#endif // GODOT_VERSION_PATCH
+#define REDOT_VERSION_NUMBER REDOT_VERSION_BRANCH
+#endif // REDOT_VERSION_PATCH
 
 // Version number encoded as hexadecimal int with one byte for each number,
 // for easy comparison from code.
 // Example: 3.1.4 will be 0x030104, making comparison easy from script.
-#define GODOT_VERSION_HEX 0x10000 * GODOT_VERSION_MAJOR + 0x100 * GODOT_VERSION_MINOR + GODOT_VERSION_PATCH
+#define REDOT_VERSION_HEX 0x10000 * REDOT_VERSION_MAJOR + 0x100 * REDOT_VERSION_MINOR + REDOT_VERSION_PATCH
 
 // TODO: determine how to deal with godot compatible versioning behavior
 

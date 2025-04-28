@@ -159,11 +159,11 @@ Dictionary Engine::get_version_info() const {
 
 Dictionary Engine::get_godot_compatible_version_info() const {
 	Dictionary dict;
-	dict["major"] = GODOT_VERSION_MAJOR;
-	dict["minor"] = GODOT_VERSION_MINOR;
-	dict["patch"] = GODOT_VERSION_PATCH;
-	dict["hex"] = GODOT_VERSION_HEX;
-	dict["status"] = GODOT_VERSION_STATUS;
+	dict["major"] = REDOT_VERSION_MAJOR;
+	dict["minor"] = REDOT_VERSION_MINOR;
+	dict["patch"] = REDOT_VERSION_PATCH;
+	dict["hex"] = REDOT_VERSION_HEX;
+	dict["status"] = REDOT_VERSION_STATUS;
 
 	String stringver = String(dict["major"]) + "." + String(dict["minor"]);
 	if ((int)dict["patch"] != 0) {

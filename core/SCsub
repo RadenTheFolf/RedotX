@@ -194,10 +194,10 @@ def version_info_builder(target, source, env):
 #define VERSION_WEBSITE "{website}"
 #define VERSION_DOCS_BRANCH "{docs_branch}"
 #define VERSION_DOCS_URL "https://docs.redotengine.org/en/" VERSION_DOCS_BRANCH
-#define GODOT_VERSION_MAJOR {godot_major}
-#define GODOT_VERSION_MINOR {godot_minor}
-#define GODOT_VERSION_PATCH {godot_patch}
-#define GODOT_VERSION_STATUS "{godot_status}"
+#define REDOT_VERSION_MAJOR {redot_major}
+#define REDOT_VERSION_MINOR {redot_minor}
+#define REDOT_VERSION_PATCH {redot_patch}
+#define REDOT_VERSION_STATUS "{redot_status}"
 """.format(**env.version_info)
         )
 

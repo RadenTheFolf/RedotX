@@ -134,16 +134,16 @@ def get_version_info(module_version_string="", silent=False):
         "module_config": str(version.module_config) + module_version_string,
         "website": str(version.website),
         "docs_branch": str(version.docs),
-        "godot_major": str(version.godot_major),
-        "godot_minor": str(version.godot_minor),
-        "godot_patch": str(version.godot_patch),
-        "godot_status": str(version.godot_status),
+        "redot_major": str(version.redot_major),
+        "redot_minor": str(version.redot_minor),
+        "redot_patch": str(version.redot_patch),
+        "redot_status": str(version.redot_status),
     }
 
     # For dev snapshots (alpha, beta, RC, etc.) we do not commit status change to Git,
     # so this define provides a way to override it without having to modify the source.
-    if os.getenv("GODOT_VERSION_STATUS") is not None:
-        version_status_str = str(os.getenv("GODOT_VERSION_STATUS"))
+    if os.getenv("REDOT_VERSION_STATUS") is not None:
+        version_status_str = str(os.getenv("REDOT_VERSION_STATUS"))
         if "." in version_status_str:
             version_status_str = version_status_str.split(".")
             version_info["status_version"] = int(version_status_str[1])
